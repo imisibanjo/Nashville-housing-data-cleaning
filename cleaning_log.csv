@@ -1,0 +1,11 @@
+step,rows_before,rows_after,cells_changed,note
+tidy_columns,56636,56636,,"Dropped ['Unnamed: 0.1', 'Unnamed: 0', 'image']; renamed all columns to snake_case."
+clean_text_fields,56636,56636,81243.0,Collapsed repeated spaces (e.g. '1208  3RD AVE S') and trimmed whitespace.
+standardise_land_use,56636,56636,1618.0,Merged variants/typos into canonical labels; 37 distinct Land Use values remain. Added land_use_group.
+standardise_categoricals,56636,56636,2099.0,Yes/No -> boolean; 'UNKNOWN' city -> NaN; city back-filled; dropped constant 'state' and redundant 'assessor_city'; fixed float-style suite numbers.
+parse_types,56636,56636,,"sale_date -> datetime64; neighborhood/year_built/bedrooms/baths -> nullable Int64; added sale_year, sale_month."
+validate_legal_reference,56636,56636,42.0,"42 legal references are malformed (e.g. '20130682- 006678'); flagged, not altered, because the true value cannot be recovered."
+drop_duplicate_sales,56636,56468,,"Removed 168 repeat records of the same parcel/date/price, keeping the row with a valid legal reference."
+clean_property_attributes,56468,56468,24101.0,"finished_area == 0 -> NaN; 0 bedrooms on single-family -> NaN; commercial grade codes (TCC, AAC, ...) grouped as 'OTHER'."
+add_quality_flags,56468,56468,,"Added has_assessor_data, nominal_price, price_is_bundle_total, sold_as_vacant_mismatch, built_after_sale, price_comparable."
+add_derived_features,56468,56468,,Added price_per_sqft (comparable residential sales only) and age_at_sale.
