@@ -74,7 +74,7 @@ nashville-housing-data-cleaning/
 ## How to run
 
 ```bash
-git clone 
+git clone https://github.com/imisibanjo/Nashville-housing-data-cleaning.git
 cd nashville-housing-data-cleaning
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
